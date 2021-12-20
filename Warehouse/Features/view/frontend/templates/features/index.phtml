@@ -1,0 +1,77 @@
+<?php
+/** @var \Warehouse\Features\Block\Template $block */
+?>
+
+<div class="template">
+    <h1><?= $block->getName() ?></h1>
+</div>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .post-id {
+        width: 2%
+    }
+
+    .post-name {
+        width: 30%
+    }
+
+    a.dbz {
+        font-size: 15px;
+        /* border: 1px solid #0000FF; */
+        /* background-color: #eb5202; */
+        /*border-color: #eb5202;*/
+        color: blue;
+        /* text-shadow: 1px 1px 0 rgb(0 0 0 / 25%);  */
+        font-size: 20px;
+        float: left;
+    }
+
+</style>
+
+<a class="dbz" href="<?= $block->getNewUrl() ?>"> New </a>
+
+<table border=1>
+    <tr>
+        <th>Entity ID</th>
+        <th>SKU</th>
+        <th>Features</th>
+        <th>Benefit</th>
+        <th>Action</th>
+    </tr>
+    <?php
+    foreach ($block->getPostCollection() as $key => $post) {
+        //if($post->getData('sku')=="24-WB05"){
+        echo '<tr>
+                    <td>' . $post->getData('entity_id') . '</td>
+                    <td>' . $post->getData('sku') . '</td>
+                    <td>' . $post->getData('features') . '</td>
+                    <td>' . $post->getData('benefit') . '</td>
+                    <td>
+                    <!-- todo Add the functionality of Edit and Delete -->
+                      <a href=' . $block->getEditPageUrl() . 'id/' . $post->getData('entity_id') . '> Edit </a>
+                      <a href=' . $block->getDeleteUrl($post->getData('entity_id')) . '>Delete</a>
+                    </td>
+                  </tr>';}
+    //}
+    ?>
+</table>
+
+</body>
+</html>

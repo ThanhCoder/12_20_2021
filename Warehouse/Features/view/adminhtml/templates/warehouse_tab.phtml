@@ -1,0 +1,57 @@
+<?php
+/** @var \Warehouse\Features\Block\Template $block */
+?>
+
+<div class="template">
+    <h1><?= $block->getName() ?></h1>
+</div>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .post-id {
+        width: 2%
+    }
+
+    .post-name {
+        width: 30%
+    }
+
+</style>
+
+<table border=1>
+    <tr>
+        <th>SKU</th>
+        <th>Warehouse Code</th>
+        <th>Source</th>
+        <th>Available Stock</th>
+        <th>Stock Status</th>
+    </tr>
+    <?php
+    foreach ($block->getPostCollection() as $key => $post) {
+        echo '<tr>
+                    <td>' . $post->getData('sku') . '</td>
+                    <td>' . $post->getData('warehouse_code') . '</td>
+                    <td>' . $post->getData('source') . '</td>
+                    <td>' . $post->getData('available_stock') . '</td>
+                    <td>' . $post->getData('stock_status') . '</td>';
+    }
+    ?>
+</table>
+</body>
+</html>

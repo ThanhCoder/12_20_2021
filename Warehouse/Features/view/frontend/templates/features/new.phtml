@@ -1,0 +1,96 @@
+<?php
+/** @var \Warehouse\Features\Block\Template $block */
+?>
+
+<div class="template">
+    <h1><?= $block->getName() ?></h1>
+</div>
+
+
+<h1 class="labe">New Features</h1>
+
+<a href="<?= $block->getIndexUrl() ?>"> Back </a>
+
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .post-id {
+        width: 2%
+    }
+
+    .post-name {
+        width: 30%
+    }
+
+    h1.labe {
+        text-align: center;
+    }
+</style>
+
+<form action="<?= $block->getPostUrl() ?>" method="post">
+    <table border=1 cellspacing="10" cellpadding=0>
+        <tr>
+            <td>SKU</td>
+            <td>
+                <select name="sku">
+                    <?php
+                    foreach ($block->getSKU() as $key => $post) {
+                        ?>
+                        <option>
+                            <?php echo '' . $post->getData('sku');
+                            '' ?>
+                        </option>
+                        <?php
+                    } ?>
+                </select></td>
+        </tr>
+        <tr>
+            <td>Features</td>
+            <td><input type="text" name="features" placeholder="Enter Features"></td>
+        </tr>
+        <tr>
+            <td>Benefit</td>
+            <td><input type="text" name="benefit" placeholder="Enter Benefit"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="sm"></td>
+            <td><input type="reset"></td>
+        </tr>
+    </table>
+</form>
+
+
+<?php
+if (isset($_POST['sm'])) {
+    if (isset($_POST['sku'])) {
+        $sku = $_POST['sku'];
+        echo $sku;
+    }
+
+    if (isset($_POST['features'])) {
+        $features = $_POST['features'];
+        echo $features;
+    }
+
+    if (isset($_POST['benefit'])) {
+        $benefit = $_POST['benefit'];
+        echo $benefit;
+    }
+}
+?>

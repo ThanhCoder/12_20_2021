@@ -1,0 +1,234 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">warehouse_index.dev_warehouse_post_listing_data_source</item>
+            <item name="deps" xsi:type="string">warehouse_index.dev_warehouse_post_listing_data_source</item>
+        </item>
+
+
+        <!-- Cot Column -->
+        <item name="spinner" xsi:type="string">spinner_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="addss" xsi:type="array">
+                <item name="name" xsi:type="string">addss</item>
+                <item name="label" xsi:type="string" translate="true">Add Item</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/newware</item>
+            </item>
+
+        </item>
+    </argument>
+
+
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <!--Bookmarks(Dấu trang) -->
+        <bookmark name="bookmarks"/>
+        <!-- Column Control(Chọn hiển thị cột nào được hiển thị trong bảng) -->
+        <columnsControls name="columns_controls"/>
+        <!-- FilterSearch(bo loc Tim kiem) -->
+        <filterSearch name="fulltext"/>
+        <!-- Filter(Bo loc) -->
+        <filters name="listing_filters"/>
+        <!-- Paging (Phan Trang)  -->
+        <paging name="listing_paging"/>
+        <!-- Export Button(Xuat file CSV,XML) -->
+        <exportButton name="export_button"/>
+    </listingToolbar>
+
+    <!-- MassAction -->
+    <listingToolbar name="listing_bottom">
+        <!-- ... other block of code -->
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="basic/index/delete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Post</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete
+                                selected items?
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+
+    <dataSource name="nameOfDataSource">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">
+                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
+            </argument>
+            <argument name="name" xsi:type="string">dev_warehouse_post_listing_data_source</argument>
+
+            <!-- Select ten phai de dung ten truong id theo db-->
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="data" xsi:type="array">
+
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+
+                        <!--Cai nay phai de banner_id (select theo 1 truong id)  -->
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <!-- Cot o vuong chon tat ca-->
+    <columns name="spinner_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <!--Cai nay phai de banner_id (select theo 1 truong id)  -->
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+
+        <column name="entity_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="sku">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">SKU</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="warehouse_code">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Warehouse Code</item>
+                </item>
+            </argument>
+        </column>
+
+
+        <column name="source">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Source</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="available_stock">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Available Stock</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="stock_status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Stock Status</item>
+                </item>
+            </argument>
+        </column>
+
+        <!-- action columns edit and delete -->
+        <actionsColumn name="actions" class="Warehouse\Features\Ui\Component\Listing\Column\WarehouseActions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">107</item>
+                    <item name="indexField" xsi:type="string">pfay_contacts_id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+
+
+    <!-- <fieldset name="design" sortOrder="50">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Design</label>
+        </settings>
+
+        <field name="page_layout" formElement="select" class="Magento\Cms\Ui\Component\Form\Field\PageLayout">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">page</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Layout</label>
+                <dataScope>page_layout</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Cms\Model\Page\Source\PageLayout"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset> -->
+</listing>

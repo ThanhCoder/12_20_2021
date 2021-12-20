@@ -1,0 +1,148 @@
+<?php
+/** @var \Warehouse\Features\Block\Template $block */
+?>
+
+<div class="template">
+    <h1><?= $block->getName() ?></h1>
+</div>
+
+
+<?php
+$data = $block->getAllData();
+$sku = '';
+$warehouse_code = '';
+$stock_status = '';
+$source = '';
+$available_stock = '';
+if ($data->getEntityId()) {
+    $sku = $data->getSku();
+    $warehouse_code = $data->getWarehouseCode();
+    $stock_status = $data->getStockStatus();
+    $source = $data->getSource();
+    $available_stock = $data->getData('available_stock');
+}
+?>
+
+
+<h1 class="labe">Edit Warehouse</h1>
+
+<a href="<?= $block->getIndexUrl() ?>"> Back </a>
+
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .post-id {
+        width: 2%
+    }
+
+    .post-name {
+        width: 30%
+    }
+
+    h1.labe {
+        text-align: center;
+    }
+</style>
+
+<form action="<?= $block->getUpdate() ?>" method="post">
+    <table border=1 cellspacing="10" cellpadding=0>
+
+        <?php
+        if ($data->getId()) {
+            ?>
+            <input type="hidden" name="id" value="<?php echo $data->getEntityId(); ?>">
+            <?php
+        }
+        ?>
+
+        <tr>
+            <td>SKU</td>
+            <td><input type="text" name="sku" style="pointer-events: none;" value="<?php echo $data->getSku(); ?>"></td>
+        </tr>
+        <!--<tr><td>SKU</td><td>-->
+        <!--<select name="entity_id">-->
+        <?php
+        // $classRows = Query("select n.sku  from catalog_product_entity n left  join warehouse s on s.entity_id = n.entity_id;");
+        // while($cRow = mysqli_fetch_array($classRows))
+        // {
+        // 	echo "<option value=\"{$cRow['id']}\"";
+        // 	if ($cRow['id'] == $class_id)
+        // 		echo " selected";
+        // 	echo ">{$cRow['name']}</option>";
+        // }
+        // foreach ($block->getPostCollection() as $key=>$post)
+        // {
+        //     echo "<option value=\"{$post->getData('sku')}\"";
+        //     echo " selected";
+        //     //echo ">{$cRow['sku']}</option>";
+        //     //echo $post->getData('sku');
+        // }
+        ?>
+        <!--</select>-->
+        <!--</td></tr>-->
+        <tr>
+            <td>Warehouse Code</td>
+            <td><input type="text" name="warehouse_code" value="<?php echo $data->getWarehouseCode(); ?>"></td>
+        </tr>
+        <tr>
+            <td>Source</td>
+            <td><input type="text" name="source" value="<?php echo $data->getSource(); ?>"></td>
+        </tr>
+        <tr>
+            <td>Available Stock</td>
+            <td><input type="int" name="available_stock" value="<?php echo $data->getData('available_stock'); ?>"></td>
+        </tr>
+        <tr>
+            <td>Stock Status</td>
+            <td><input type="text" name="stock_status" value="<?php echo $data->getStockStatus(); ?>"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="sm"></td>
+            <td><input type="reset"></td>
+        </tr>
+    </table>
+</form>
+
+<?php
+if (isset($_POST['sm'])) {
+    if (isset($_POST['sku'])) {
+        $sku = $_POST['sku'];
+        echo $sku;
+    }
+
+    if (isset($_POST['warehouse_code'])) {
+        $warehouse_code = $_POST['warehouse_code'];
+        echo $warehouse_code;
+    }
+
+    if (isset($_POST['source'])) {
+        $source = $_POST['source'];
+        echo $source;
+    }
+
+    if (isset($_POST['available_stock'])) {
+        $available_stock = $_POST['available_stock'];
+        echo $available_stock;
+    }
+    if (isset($_POST['stock_status'])) {
+        $stock_status = $_POST['stock_status'];
+        echo $stock_status;
+    }
+}
+?>

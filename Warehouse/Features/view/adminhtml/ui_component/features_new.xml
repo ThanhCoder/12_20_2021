@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+
+        <item name="js_config" xsi:type="array">
+
+            <item name="provider" xsi:type="string">features_new.dev_features_post_listing_data_source</item>
+
+            <item name="deps" xsi:type="string">features_new.dev_features_post_listing_data_source</item>
+
+        </item>
+
+        <item name="label" xsi:type="string" translate="true">Add New Record</item>
+
+        <item name="config" xsi:type="array">
+
+            <item name="dataScope" xsi:type="string">data</item>
+
+            <item name="namespace" xsi:type="string">features_new</item>
+
+        </item>
+
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+
+        <item name="buttons" xsi:type="array">
+
+            <item name="back" xsi:type="string">Magento\Customer\Block\Adminhtml\Edit\BackButton</item>
+            <item name="reset" xsi:type="string">Magento\Customer\Block\Adminhtml\Edit\ResetButton</item>
+            <item name="save" xsi:type="string">Warehouse\Features\Block\Adminhtml\Features\Edit\Save</item>
+
+        </item>
+
+    </argument>
+
+    <dataSource name="dev_banner_post_listing_data_source">
+        <!-- Gọi các trường khởi tạo trong Data Provider -->
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <!-- Gọi các trường khởi tạo trong Data Provider -->
+            <argument name="class" xsi:type="string">Warehouse\Features\Model\DataProvider</argument>
+            <!-- Gọi các trường khởi tạo trong Data Provider -->
+            <argument name="name" xsi:type="string">dev_features_post_listing_data_source</argument>
+            <!-- Gọi các trường khởi tạo trong Data Provider -->
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <!-- Gọi các trường khởi tạo trong Data Provider -->
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <!-- Gọi các trường khởi tạo trong Data Provider -->
+            <argument name="data" xsi:type="array">
+
+                <item name="config" xsi:type="array">
+
+                    <item name="submit_url" xsi:type="url" path="*/*/save"/>
+
+                </item>
+
+            </argument>
+
+        </argument>
+
+        <argument name="data" xsi:type="array">
+
+            <item name="js_config" xsi:type="array">
+
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+
+            </item>
+
+        </argument>
+
+    </dataSource>
+
+    <fieldset name="general_information">
+
+        <argument name="data" xsi:type="array">
+
+            <item name="config" xsi:type="array">
+
+                <item name="collapsible" xsi:type="boolean">false</item>
+
+                <item name="label" xsi:type="string" translate="true">General Information</item>
+
+                <item name="sortOrder" xsi:type="number">20</item>
+
+            </item>
+
+        </argument>
+
+        <field name="sku" sortOrder="10" formElement="input">
+
+            <settings>
+
+                <dataType>text</dataType>
+
+                <visible>true</visible>
+
+                <label translate="true">SKU</label>
+
+            </settings>
+
+        </field>
+
+        <field name="features" sortOrder="20" formElement="input">
+
+            <settings>
+
+                <dataType>text</dataType>
+
+                <visible>true</visible>
+
+                <label translate="true">Features</label>
+
+            </settings>
+
+        </field>
+
+
+        <field name="benefit" sortOrder="20" formElement="input">
+
+            <settings>
+
+                <dataType>text</dataType>
+
+                <visible>true</visible>
+
+                <label translate="true">Benefit</label>
+
+            </settings>
+
+        </field>
+
+
+         <!--<field name="multiselect_example" formElement="multiselect">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Multiselect Example</label>
+                <dataScope>multiselect_example</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="label" xsi:type="string">Option #1</item>
+                            </option>
+                            <option name="2" xsi:type="array">
+                                <item name="value" xsi:type="string">2</item>
+                                <item name="label" xsi:type="string">Option #2</item>
+                            </option>
+                            <option name="3" xsi:type="array">
+                                <item name="value" xsi:type="string">3</item>
+                                <item name="label" xsi:type="string">Option #3</item>
+                            </option>
+                        </options>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>-->
+
+    <!-- <field name="group">
+        <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="array">Warehouse\Features\Model\Model\Source\Myvalues</item>
+            <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="label" translate="true" xsi:type="string">Your Label</item>
+                <item name="formElement" xsi:type="string">multiselect</item>
+            </item>
+        </argument>
+    </field> -->
+
+
+<!-- <field name="custom_options_list">
+    <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">Warehouse\Features\Model\Source\CustOptions</item>
+        <item name="config" xsi:type="array">
+            <item name="additionalClasses" xsi:type="string">required</item>
+            <item name="dataType" xsi:type="string">text</item>
+            <item name="label" xsi:type="string" translate="true">Select SKU</item>
+            <item name="componentType" xsi:type="string">field</item>
+            <item name="formElement" xsi:type="string">select</item>
+            <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+            <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+            <item name="dataScope" xsi:type="string">custom_options_list</item>
+            <item name="filterOptions" xsi:type="boolean">true</item>
+            <item name="showCheckbox" xsi:type="boolean">true</item>
+            <item name="disableLabel" xsi:type="boolean">true</item>
+            <item name="multiple" xsi:type="boolean">true</item>
+            <item name="levelsVisibility" xsi:type="number">1</item>
+            <item name="sortOrder" xsi:type="number">70</item>
+            <item name="required" xsi:type="boolean">true</item>
+            <item name="validation" xsi:type="array">
+                <item name="required-entry" xsi:type="boolean">false</item>
+            </item>
+            <item name="listens" xsi:type="array">
+                <item name="${ $.namespace }.${ $.namespace }:responseData" xsi:type="string">setParsed</item>
+            </item>
+        </item>
+    </argument>
+</field> -->
+
+    </fieldset>
+
+
+</form>

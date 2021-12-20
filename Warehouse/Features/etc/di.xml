@@ -1,0 +1,48 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dev_warehouse_post_listing_data_source" xsi:type="string">
+                    Warehouse\Features\Model\ResourceModel\Warehouse\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Warehouse\Features\Model\ResourceModel\Warehouse\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <!-- Ten database-->
+            <argument name="mainTable" xsi:type="string">warehouse</argument>
+            <!--Duong dan Collection-->
+            <argument name="resourceModel" xsi:type="string">Warehouse\Features\Model\ResourceModel\Warehouse</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="dev_features_post_listing_data_source" xsi:type="string">
+                    Warehouse\Features\Model\ResourceModel\Features\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Warehouse\Features\Model\ResourceModel\Features\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <!-- Ten database-->
+            <argument name="mainTable" xsi:type="string">features</argument>
+            <!--Duong dan Collection-->
+            <argument name="resourceModel" xsi:type="string">Warehouse\Features\Model\ResourceModel\Features</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="custom_menu_item" type="Warehouse\Features\Plugin\Topmenu" sortOrder="10"
+                disabled="false"/>
+    </type>
+
+</config>
+
+

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Warehouse_Features::catalog_products" title="Warehouse" translate="title" module="Warehouse_Features" sortOrder="10" parent="Magento_Catalog::inventory" action="anadin/warehouse/index/" resource="Magento_Catalog::products"/>
+        <add id="Warehouse_Features::catalog_product" title="Features" translate="title" module="Warehouse_Features" sortOrder="10" parent="Magento_Catalog::inventory" action="anadin/features/index/" resource="Magento_Catalog::products"/>
+    </menu>
+</config>
